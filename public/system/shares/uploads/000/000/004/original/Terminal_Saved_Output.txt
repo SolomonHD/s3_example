@@ -1,0 +1,165 @@
+irb(main):014:0> Item.create({name: "Steak", description: "If you need protein, go with this."})
+   (0.1ms)  begin transaction
+  SQL (1.1ms)  INSERT INTO "items" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "Steak"], ["description", "If you need protein, go with this."], ["created_at", "2015-02-03 14:40:11.438481"], ["updated_at", "2015-02-03 14:40:11.438481"]]
+   (1.2ms)  commit transaction
+=> #<Item id: 4, name: "Steak", description: "If you need protein, go with this.", price: nil, course_id: nil, image: nil, created_at: "2015-02-03 14:40:11", updated_at: "2015-02-03 14:40:11">
+irb(main):015:0> Item.create({name: "Chocolate", description: "Don't tell Mason where you're keeping it."})
+   (0.1ms)  begin transaction
+  SQL (0.4ms)  INSERT INTO "items" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "Chocolate"], ["description", "Don't tell Mason where you're keeping it."], ["created_at", "2015-02-03 14:40:17.926339"], ["updated_at", "2015-02-03 14:40:17.926339"]]
+   (1.1ms)  commit transaction
+=> #<Item id: 5, name: "Chocolate", description: "Don't tell Mason where you're keeping it.", price: nil, course_id: nil, image: nil, created_at: "2015-02-03 14:40:17", updated_at: "2015-02-03 14:40:17">
+irb(main):016:0> Item.create({name: "Tiramasu", description: "It's not for everyone."})
+   (0.1ms)  begin transaction
+  SQL (0.4ms)  INSERT INTO "items" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "Tiramasu"], ["description", "It's not for everyone."], ["created_at", "2015-02-03 14:40:21.597975"], ["updated_at", "2015-02-03 14:40:21.597975"]]
+   (1.2ms)  commit transaction
+=> #<Item id: 6, name: "Tiramasu", description: "It's not for everyone.", price: nil, course_id: nil, image: nil, created_at: "2015-02-03 14:40:21", updated_at: "2015-02-03 14:40:21">
+irb(main):017:0> Item.all                                                         Item Load (0.2ms)  SELECT "items".* FROM "items"
+=> #<ActiveRecord::Relation [#<Item id: 4, name: "Steak", description: "If you need protein, go with this.", price: nil, course_id: nil, image: nil, created_at: "2015-02-03 14:40:11", updated_at: "2015-02-03 14:40:11">, #<Item id: 5, name: "Chocolate", description: "Don't tell Mason where you're keeping it.", price: nil, course_id: nil, image: nil, created_at: "2015-02-03 14:40:17", updated_at: "2015-02-03 14:40:17">, #<Item id: 6, name: "Tiramasu", description: "It's not for everyone.", price: nil, course_id: nil, image: nil, created_at: "2015-02-03 14:40:21", updated_at: "2015-02-03 14:40:21">]>
+irb(main):018:0> Item.first
+  Item Load (0.3ms)  SELECT  "items".* FROM "items"  ORDER BY "items"."id" ASC LIMIT 1
+=> #<Item id: 4, name: "Steak", description: "If you need protein, go with this.", price: nil, course_id: nil, image: nil, created_at: "2015-02-03 14:40:11", updated_at: "2015-02-03 14:40:11">
+irb(main):019:0> Item.first.name
+  Item Load (0.2ms)  SELECT  "items".* FROM "items"  ORDER BY "items"."id" ASC LIMIT 1
+=> "Steak"
+irb(main):020:0> Item.find(1)
+  Item Load (0.2ms)  SELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1  [["id", 1]]
+ActiveRecord::RecordNotFound: Couldn't find Item with 'id'=1
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activerecord-4.2.0/lib/active_record/core.rb:154:in `find'
+	from (irb):20
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/railties-4.2.0/lib/rails/commands/console.rb:110:in `start'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/railties-4.2.0/lib/rails/commands/console.rb:9:in `start'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/railties-4.2.0/lib/rails/commands/commands_tasks.rb:68:in `console'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/railties-4.2.0/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/railties-4.2.0/lib/rails/commands.rb:17:in `<top (required)>'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:274:in `require'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:274:in `block in require'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:240:in `load_dependency'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:274:in `require'
+	from /Users/masonfmatthews/Desktop/menu/bin/rails:8:in `<top (required)>'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:268:in `load'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:268:in `block in load'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:240:in `load_dependency'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:268:in `load'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+	from -e:1:in `<main>'irb(main):021:0> Item.find_by_name("Chocolate")
+  Item Load (0.3ms)  SELECT  "items".* FROM "items" WHERE "items"."name" = ? LIMIT 1  [["name", "Chocolate"]]
+=> #<Item id: 5, name: "Chocolate", description: "Don't tell Mason where you're keeping it.", price: nil, course_id: nil, image: nil, created_at: "2015-02-03 14:40:17", updated_at: "2015-02-03 14:40:17">
+irb(main):022:0> Item.where(name: "Chocolate").first
+  Item Load (0.3ms)  SELECT  "items".* FROM "items" WHERE "items"."name" = ?  ORDER BY "items"."id" ASC LIMIT 1  [["name", "Chocolate"]]
+=> #<Item id: 5, name: "Chocolate", description: "Don't tell Mason where you're keeping it.", price: nil, course_id: nil, image: nil, created_at: "2015-02-03 14:40:17", updated_at: "2015-02-03 14:40:17">
+irb(main):023:0> Item.find_by(name: "Chocolate").first
+  Item Load (0.2ms)  SELECT  "items".* FROM "items" WHERE "items"."name" = ? LIMIT 1  [["name", "Chocolate"]]
+NoMethodError: undefined method `first' for #<Item:0x007fada6aba9e0>
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activemodel-4.2.0/lib/active_model/attribute_methods.rb:433:in `method_missing'
+	from (irb):23
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/railties-4.2.0/lib/rails/commands/console.rb:110:in `start'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/railties-4.2.0/lib/rails/commands/console.rb:9:in `start'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/railties-4.2.0/lib/rails/commands/commands_tasks.rb:68:in `console'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/railties-4.2.0/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/railties-4.2.0/lib/rails/commands.rb:17:in `<top (required)>'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:274:in `require'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:274:in `block in require'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:240:in `load_dependency'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:274:in `require'
+	from /Users/masonfmatthews/Desktop/menu/bin/rails:8:in `<top (required)>'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:268:in `load'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:268:in `block in load'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:240:in `load_dependency'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:268:in `load'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/spring-1.2.0/lib/spring/commands/rails.rb:6:in `call'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/spring-1.2.0/lib/spring/command_wrapper.rb:38:in `call'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/spring-1.2.0/lib/spring/application.rb:183:in `block in serve'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/spring-1.2.0/lib/spring/application.rb:156:in `fork'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/spring-1.2.0/lib/spring/application.rb:156:in `serve'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/spring-1.2.0/lib/spring/application.rb:131:in `block in run'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/spring-1.2.0/lib/spring/application.rb:125:in `loop'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/spring-1.2.0/lib/spring/application.rb:125:in `run'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/spring-1.2.0/lib/spring/application/boot.rb:18:in `<top (required)>'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+	from -e:1:in `<main>'irb(main):024:0> Item.find_by(name: "Chocolate")
+  Item Load (0.2ms)  SELECT  "items".* FROM "items" WHERE "items"."name" = ? LIMIT 1  [["name", "Chocolate"]]
+=> #<Item id: 5, name: "Chocolate", description: "Don't tell Mason where you're keeping it.", price: nil, course_id: nil, image: nil, created_at: "2015-02-03 14:40:17", updated_at: "2015-02-03 14:40:17">
+irb(main):025:0> Item.where(name: "Chocolate")
+  Item Load (0.3ms)  SELECT "items".* FROM "items" WHERE "items"."name" = ?  [["name", "Chocolate"]]
+=> #<ActiveRecord::Relation [#<Item id: 5, name: "Chocolate", description: "Don't tell Mason where you're keeping it.", price: nil, course_id: nil, image: nil, created_at: "2015-02-03 14:40:17", updated_at: "2015-02-03 14:40:17">]>
+irb(main):026:0> Item.where(name: nil)
+  Item Load (0.2ms)  SELECT "items".* FROM "items" WHERE "items"."name" IS NULL
+=> #<ActiveRecord::Relation []>
+irb(main):027:0> bad_spelling = Item.find_by_name("Tiramasu")
+  Item Load (0.2ms)  SELECT  "items".* FROM "items" WHERE "items"."name" = ? LIMIT 1  [["name", "Tiramasu"]]
+=> #<Item id: 6, name: "Tiramasu", description: "It's not for everyone.", price: nil, course_id: nil, image: nil, created_at: "2015-02-03 14:40:21", updated_at: "2015-02-03 14:40:21">
+irb(main):028:0> bad_spelling.name = "Tiramisufsdkjfhads"
+=> "Tiramisufsdkjfhads"
+irb(main):029:0> another_dessert = Item.find_by_name("Tiramisufsdkjfhads")
+  Item Load (0.2ms)  SELECT  "items".* FROM "items" WHERE "items"."name" = ? LIMIT 1  [["name", "Tiramisufsdkjfhads"]]
+=> nil
+irb(main):030:0> bad_spelling.save!
+   (0.1ms)  begin transaction
+  SQL (1.1ms)  UPDATE "items" SET "name" = ?, "updated_at" = ? WHERE "items"."id" = ?  [["name", "Tiramisufsdkjfhads"], ["updated_at", "2015-02-03 14:51:41.587557"], ["id", 6]]
+   (1.1ms)  commit transaction
+=> true
+irb(main):031:0> another_dessert = Item.find_by_name("Tiramisufsdkjfhads")
+  Item Load (0.2ms)  SELECT  "items".* FROM "items" WHERE "items"."name" = ? LIMIT 1  [["name", "Tiramisufsdkjfhads"]]
+=> #<Item id: 6, name: "Tiramisufsdkjfhads", description: "It's not for everyone.", price: nil, course_id: nil, image: nil, created_at: "2015-02-03 14:40:21", updated_at: "2015-02-03 14:51:41">
+irb(main):032:0> bad_spelling
+=> #<Item id: 6, name: "Tiramisufsdkjfhads", description: "It's not for everyone.", price: nil, course_id: nil, image: nil, created_at: "2015-02-03 14:40:21", updated_at: "2015-02-03 14:51:41">
+irb(main):033:0> bad_spelling.update(name: "Tiramisu")
+   (0.1ms)  begin transaction
+  SQL (0.2ms)  UPDATE "items" SET "name" = ?, "updated_at" = ? WHERE "items"."id" = ?  [["name", "Tiramisu"], ["updated_at", "2015-02-03 14:53:04.152976"], ["id", 6]]
+   (1.0ms)  commit transaction
+=> true
+irb(main):034:0> Item.all
+  Item Load (0.3ms)  SELECT "items".* FROM "items"
+=> #<ActiveRecord::Relation [#<Item id: 4, name: "Steak", description: "If you need protein, go with this.", price: nil, course_id: nil, image: nil, created_at: "2015-02-03 14:40:11", updated_at: "2015-02-03 14:40:11">, #<Item id: 5, name: "Chocolate", description: "Don't tell Mason where you're keeping it.", price: nil, course_id: nil, image: nil, created_at: "2015-02-03 14:40:17", updated_at: "2015-02-03 14:40:17">, #<Item id: 6, name: "Tiramisu", description: "It's not for everyone.", price: nil, course_id: nil, image: nil, created_at: "2015-02-03 14:40:21", updated_at: "2015-02-03 14:53:04">]>
+irb(main):035:0> Item.all.names
+NoMethodError:   Item Load (0.3ms)  SELECT "items".* FROM "items"
+undefined method `names' for #<Item::ActiveRecord_Relation:0x007fada6afb5d0>
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activerecord-4.2.0/lib/active_record/relation/delegation.rb:136:in `method_missing'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activerecord-4.2.0/lib/active_record/relation/delegation.rb:99:in `method_missing'
+	from (irb):35
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/railties-4.2.0/lib/rails/commands/console.rb:110:in `start'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/railties-4.2.0/lib/rails/commands/console.rb:9:in `start'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/railties-4.2.0/lib/rails/commands/commands_tasks.rb:68:in `console'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/railties-4.2.0/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/railties-4.2.0/lib/rails/commands.rb:17:in `<top (required)>'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:274:in `require'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:274:in `block in require'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:240:in `load_dependency'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:274:in `require'
+	from /Users/masonfmatthews/Desktop/menu/bin/rails:8:in `<top (required)>'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:268:in `load'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:268:in `block in load'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:240:in `load_dependency'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:268:in `load'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/spring-1.2.0/lib/spring/commands/rails.rb:6:in `call'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/spring-1.2.0/lib/spring/command_wrapper.rb:38:in `call'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/spring-1.2.0/lib/spring/application.rb:183:in `block in serve'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/spring-1.2.0/lib/spring/application.rb:156:in `fork'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/spring-1.2.0/lib/spring/application.rb:156:in `serve'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/spring-1.2.0/lib/spring/application.rb:131:in `block in run'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/spring-1.2.0/lib/spring/application.rb:125:in `loop'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/spring-1.2.0/lib/spring/application.rb:125:in `run'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/spring-1.2.0/lib/spring/application/boot.rb:18:in `<top (required)>'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+	from /Users/masonfmatthews/.rbenv/versions/2.2.0/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+	from -e:1:in `<main>'irb(main):036:0> Item.all.map &:name
+  Item Load (0.2ms)  SELECT "items".* FROM "items"
+=> ["Steak", "Chocolate", "Tiramisu"]
+irb(main):037:0> exit
+Masons-Black-MacBook-Pro:menu masonfmatthews$ cd ..
+Masons-Black-MacBook-Pro:Desktop masonfmatthews$ rm -rf menu
+Masons-Black-MacBook-Pro:Desktop masonfmatthews$ git clone https://github.com/owenrham/menu.git
+Cloning into 'menu'...
+remote: Counting objects: 123, done.
+remote: Compressing objects: 100% (97/97), done.
+remote: Total 123 (delta 19), reused 123 (delta 19)
+Receiving objects: 100% (123/123), 37.52 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (19/19), done.
+Checking connectivity... done.
+Masons-Black-MacBook-Pro:Desktop masonfmatthews$ cd menu
+Masons-Black-MacBook-Pro:menu masonfmatthews$ atom .
+Masons-Black-MacBook-Pro:menu masonfmatthews$ bundle install --without production
+Your Ruby version is 2.2.0, but your Gemfile specified 2.1.5
+Masons-Black-MacBook-Pro:menu masonfmatthews$ 
